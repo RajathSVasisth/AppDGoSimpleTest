@@ -72,7 +72,6 @@ func main() {
 		maxBtCount := 20000
 		btCount := 0
 		fmt.Println("Starting Scene 2")
-
 		fmt.Print("Doing something")
 		for btCount < maxBtCount {
 			fmt.Print("Doing something inside for loop")
