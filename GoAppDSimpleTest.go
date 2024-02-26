@@ -67,33 +67,34 @@ func main() {
 		fmt.Printf("Error initializing the AppDynamics SDK\n")
 	} else {
 		fmt.Printf("Initialized AppDynamics SDK successfully\n")
+		fmt.Println("Starting Scene")
+		// Run some BTs
+		maxBtCount := 20000
+		btCount := 0
+		fmt.Println("Starting Scene 2")
+
+		fmt.Print("Doing something")
+		for btCount < maxBtCount {
+			fmt.Print("Doing something inside for loop")
+			// start the "Checkout" transaction
+			btHandle := appd.StartBT("MyTestGolangBT", "")
+
+			// do something....
+			fmt.Print(".")
+			milliseconds := 250
+			time.Sleep(time.Duration(milliseconds) * time.Millisecond)
+
+			// end the transaction
+			appd.EndBT(btHandle)
+			fmt.Print("Doing something inside for loop end")
+
+		}
+		fmt.Print("Doing something end")
+		fmt.Print("\n")
+
+		// Stop/Clean up the AppD SDK.
+		appd.TerminateSDK()
 	}
 	fmt.Println("Garbage")
-
-	// Run some BTs
-	maxBtCount := 20000
-	btCount := 0
-
-	fmt.Print("Doing something")
-	for btCount < maxBtCount {
-		fmt.Print("Doing something inside for loop")
-		// start the "Checkout" transaction
-		btHandle := appd.StartBT("MyTestGolangBT", "")
-
-		// do something....
-		fmt.Print(".")
-		milliseconds := 250
-		time.Sleep(time.Duration(milliseconds) * time.Millisecond)
-
-		// end the transaction
-		appd.EndBT(btHandle)
-		fmt.Print("Doing something inside for loop end")
-
-	}
-	fmt.Print("Doing something end")
-	fmt.Print("\n")
-
-	// Stop/Clean up the AppD SDK.
-	appd.TerminateSDK()
 
 }
