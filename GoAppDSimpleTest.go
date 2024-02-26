@@ -9,7 +9,6 @@ import (
 	"time"
 )
 
-
 func main() {
 
 	fmt.Println("Arch Check")
@@ -20,9 +19,9 @@ func main() {
 	var ldd_out bytes.Buffer
 	ldd_cmd.Stdout = &ldd_out
 
-	ldd_err := ldd_cmd.Run();
+	ldd_err := ldd_cmd.Run()
 	if ldd_err != nil {
-		log.Fatal(ldd_err);
+		log.Fatal(ldd_err)
 	}
 
 	fmt.Printf("ldd --version:\n")
@@ -34,9 +33,9 @@ func main() {
 	var uname_out bytes.Buffer
 	uname_cmd.Stdout = &uname_out
 
-	uname_err := uname_cmd.Run();
+	uname_err := uname_cmd.Run()
 	if uname_err != nil {
-		log.Fatal(uname_err);
+		log.Fatal(uname_err)
 	}
 
 	fmt.Printf("uname -a:\n")
@@ -59,13 +58,17 @@ func main() {
 
 	// misc
 	cfg.InitTimeoutMs = 1000
+	fmt.Println("Garbage One")
+	err := appd.InitSDK(&cfg)
+	fmt.Println("Hello", err)
 
 	// init the SDK
-	if err := appd.InitSDK(&cfg); err != nil {
+	if err != nil {
 		fmt.Printf("Error initializing the AppDynamics SDK\n")
 	} else {
 		fmt.Printf("Initialized AppDynamics SDK successfully\n")
 	}
+	fmt.Println("Garbage")
 
 	// Run some BTs
 	maxBtCount := 20000
@@ -73,6 +76,7 @@ func main() {
 
 	fmt.Print("Doing something")
 	for btCount < maxBtCount {
+		fmt.Print("Doing something inside for loop")
 		// start the "Checkout" transaction
 		btHandle := appd.StartBT("MyTestGolangBT", "")
 
@@ -83,8 +87,10 @@ func main() {
 
 		// end the transaction
 		appd.EndBT(btHandle)
+		fmt.Print("Doing something inside for loop end")
 
 	}
+	fmt.Print("Doing something end")
 	fmt.Print("\n")
 
 	// Stop/Clean up the AppD SDK.
