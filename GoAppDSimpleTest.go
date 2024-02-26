@@ -46,9 +46,9 @@ func main() {
 	cfg := appd.Config{}
 
 	// Controller
-	cfg.Controller.Host = "https://lombard202402252129458.saas.appdynamics.com"
-	// cfg.Controller.Port = 8090
-	cfg.Controller.UseSSL = false
+	cfg.Controller.Host = "lombard202402252129458"
+	cfg.Controller.Port = 443
+	cfg.Controller.UseSSL = true
 	cfg.Controller.Account = "lombard202402252129458"
 	cfg.Controller.AccessKey = "0qouo5ccpxc0"
 
