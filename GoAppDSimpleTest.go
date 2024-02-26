@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"os/exec"
-	"bytes"
-	"log"
 	appd "appdynamics"
+	"bytes"
+	"fmt"
+	"log"
+	"os/exec"
 	"time"
 )
 
@@ -46,11 +46,11 @@ func main() {
 	cfg := appd.Config{}
 
 	// Controller
-	cfg.Controller.Host = "<my-controller-port>"
-	cfg.Controller.Port = 8090
+	cfg.Controller.Host = "https://lombard202402252129458.saas.appdynamics.com"
+	// cfg.Controller.Port = 8090
 	cfg.Controller.UseSSL = false
-	cfg.Controller.Account = "customer1"
-	cfg.Controller.AccessKey = "<my-access-key>"
+	cfg.Controller.Account = "lombard202402252129458"
+	cfg.Controller.AccessKey = "0qouo5ccpxc0"
 
 	// App Context
 	cfg.AppName = "GolangTest1"
