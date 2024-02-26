@@ -48,7 +48,9 @@ ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" /"opt/appdynamics/src" && chmod -R 777 "$GOPATH"
+RUN cd /usr/local
 RUN ls
+RUN cd ../..
 ADD golang-sdk-x64-linux-4.4.2.877.tar.bz2 /opt/appdynamics/src
 ENV GOPATH /opt/appdynamics:$GOPATH
 ENV LD_LIBRARY_PATH /opt/appdynamics/src/appdynamics/lib
